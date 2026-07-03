@@ -2,24 +2,24 @@ import { Check } from 'lucide-react';
 
 const rooms = [
   {
-    name: 'Private Room',
+    name: 'Private Rooms',
     image: 'https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'A spacious private room with a large window, personal bathroom access, and room for cherished furniture.',
     features: ['Private bedroom', 'Large window', 'Personal closet & dresser', 'Emergency call system'],
     featured: false,
   },
-  {
-    name: 'Garden Room',
-    image: 'https://images.pexels.com/photos/3935352/pexels-photo-3935352.jpeg?auto=compress&cs=tinysrgb&w=1000',
-    desc: 'Our most popular option — a bright room overlooking the garden patio, perfect for nature lovers.',
-    features: ['Garden view', 'Morning sunlight', 'Steps from common area', 'Half bath nearby'],
-    featured: false,
-  },
+  // {
+  //   name: 'Garden Room',
+  //   image: 'https://images.pexels.com/photos/6438792/pexels-photo-6438792.jpeg?auto=compress&cs=tinysrgb&w=1000',
+  //   desc: 'Our most popular option — a bright room overlooking the garden patio, perfect for nature lovers.',
+  //   features: ['Garden view', 'Morning sunlight', 'Steps from common area', 'Half bath nearby'],
+  //   featured: false,
+  // },
   {
     name: 'Companion Room',
-    image: 'https://images.pexels.com/photos/6438792/pexels-photo-6438792.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    image: 'https://images.pexels.com/photos/3935352/pexels-photo-3935352.jpeg?auto=compress&cs=tinysrgb&w=1000',
     desc: 'A shared room option that offers companionship and affordability without sacrificing comfort.',
-    features: ['Shared bedroom', 'Two single beds', 'Shared bathroom', 'Built-in companionship'],
+    features: ['Shared bedroom', 'Two single beds', 'Shared bathroom', 'Built-in companionship', 'Morning sunlight'],
     featured: false,
   },
 ];

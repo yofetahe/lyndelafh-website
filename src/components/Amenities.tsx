@@ -7,7 +7,7 @@ const amenities = [
   { icon: Tv, label: 'TV in Rooms' },
   { icon: Wifi, label: 'Free Wi-Fi' },
   { icon: Gamepad2, label: 'Games & Activities' },
-  { icon: Church, label: 'Worship Services' },
+  // { icon: Church, label: 'Worship Services' },
   { icon: Car, label: 'Transportation Arranged' },
 ];
 

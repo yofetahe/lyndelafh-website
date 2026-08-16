@@ -8,13 +8,13 @@ const rooms = [
     features: ['Private bedroom', 'Large window', 'Personal closet & dresser', 'Emergency call system'],
     featured: false,
   },
-  // {
-  //   name: 'Garden Room',
-  //   image: 'https://images.pexels.com/photos/6438792/pexels-photo-6438792.jpeg?auto=compress&cs=tinysrgb&w=1000',
-  //   desc: 'Our most popular option — a bright room overlooking the garden patio, perfect for nature lovers.',
-  //   features: ['Garden view', 'Morning sunlight', 'Steps from common area', 'Half bath nearby'],
-  //   featured: false,
-  // },
+  {
+    name: 'Garden Room',
+    image: 'https://images.pexels.com/photos/6438792/pexels-photo-6438792.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    desc: 'Our most popular option — a bright room overlooking the garden patio, perfect for nature lovers.',
+    features: ['Garden view', 'Morning sunlight', 'Steps from common area', 'Half bath nearby'],
+    featured: false,
+  },
   {
     name: 'Companion Room',
     image: 'https://images.pexels.com/photos/3935352/pexels-photo-3935352.jpeg?auto=compress&cs=tinysrgb&w=1000',

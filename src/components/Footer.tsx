@@ -1,4 +1,4 @@
-import { Heart, MapPin, Phone, Mail } from 'lucide-react';
+import { Heart, MapPin, Phone, Smartphone, Mail } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -57,11 +57,18 @@ export default function Footer() {
                 19430 70th Pl W, Lynnwood WA, 98036
               </li>
               <li>
-                <a href="tel:+15551234567" className="flex items-center gap-3 transition-colors hover:text-cream-300">
+                <a href="tel:+12068421791" className="flex items-center gap-3 transition-colors hover:text-cream-300">
                   <Phone className="h-4 w-4 flex-shrink-0 text-cream-400" />
                   (206) 842-1791
                 </a>
               </li>
+              <li>
+                <a href="tel:+12067650002" className="flex items-center gap-3 transition-colors hover:text-cream-300">
+                  <Smartphone className="h-4 w-4 flex-shrink-0 text-cream-400" />
+                  (206) 765-0002
+                </a>
+              </li>
+              
               <li>
                 <a href="mailto:hello@lyndelhome.com" className="flex items-center gap-3 transition-colors hover:text-cream-300">
                   <Mail className="h-4 w-4 flex-shrink-0 text-cream-400" />
@@ -77,7 +84,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Lyndel Adult Family Home. All rights reserved.
           </p>
           <p className="text-xs text-cream-100/50">
-            Licensed Adult Family Home · State of Washington
+            Licensed Adult Family Home · State of Washington | <a href="/admin" className="text-sm text-gray-500 hover:underline">Staff Portal</a>
           </p>
         </div>
       </div>

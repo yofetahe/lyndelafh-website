@@ -1,4 +1,5 @@
 import { Wifi, Tv, BookOpen, Trees, Car, Sun, Gamepad2, Church } from 'lucide-react';
+import LivingRoom4 from '../assets/LivingRoom4.jpeg';
 
 const amenities = [
   { icon: Trees, label: 'Garden & Patio' },
@@ -35,7 +36,7 @@ export default function Amenities() {
 
             <div className="reveal mt-10 overflow-hidden rounded-3xl shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={LivingRoom4} //"https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="A cozy, sunlit living room"
                 className="aspect-[16/10] w-full object-cover"
                 loading="lazy"

@@ -1,4 +1,4 @@
-import { ArrowRight, Phone, ShieldCheck, Clock, Utensils } from 'lucide-react';
+import { ArrowRight, Phone, Smartphone, ShieldCheck, Clock, Utensils } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -42,11 +42,18 @@ export default function Hero() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="tel:+15551234567"
+              href="tel:+12068421719"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-cream-100/40 bg-white/5 px-7 py-3.5 text-sm font-semibold text-cream-50 backdrop-blur-sm transition-all duration-300 hover:bg-white/15"
             >
               <Phone className="h-4 w-4" />
               (206) 842-1791
+            </a>
+            <a
+              href="tel:+12067650002"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-cream-100/40 bg-white/5 px-7 py-3.5 text-sm font-semibold text-cream-50 backdrop-blur-sm transition-all duration-300 hover:bg-white/15"
+            >
+              <Smartphone className="h-4 w-4" />
+              (206) 765-0002
             </a>
           </div>
 

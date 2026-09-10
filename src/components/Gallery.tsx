@@ -1,13 +1,23 @@
 import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import LivingRoom3 from '../assets/LivingRoom3.jpeg';
+import Kitchen from '../assets/Kitchen.jpeg';
+import BedRoomB from '../assets/BedRoomB.png';
+import BedRoomC from '../assets/BedRoomC.png';
+import BedRoomD from '../assets/BedRoomD.png';
+import BedRoomDCoffeeTable from '../assets/BedRoomDCoffeeTable.jpg';
+import Bathroom from '../assets/Bathroom.jpeg';
+import Front2 from '../assets/Front2.jpeg';
 
 const images = [
-  { src: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1000', alt: 'Cozy living room', span: 'lg:col-span-2 lg:row-span-2' },
-  { src: 'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Garden pathway', span: '' },
-  { src: 'https://images.pexels.com/photos/6585757/pexels-photo-6585757.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Comfortable bedroom', span: '' },
-  { src: 'https://images.pexels.com/photos/2631746/pexels-photo-2631746.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Dining area', span: '' },
-  { src: 'https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Outdoor patio', span: '' },
-  { src: 'https://images.pexels.com/photos/3935352/pexels-photo-3935352.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Sunlit room', span: '' },
+  { src: LivingRoom3, alt: 'Cozy living room', span: 'lg:col-span-2 lg:row-span-2' },
+  { src: Kitchen, alt: 'Kitchen Area', span: '' },
+  { src: BedRoomB, alt: 'Comfortable bedroom', span: '' },
+  { src: BedRoomC, alt: 'Comfortable bedroom', span: '' },
+  { src: BedRoomD, alt: 'Comfortable bedroom', span: '' },
+  { src: BedRoomDCoffeeTable, alt: 'Coffee table', span: '' },
+  { src: Bathroom, alt: 'Bathroom', span: '' },
+  { src: Front2, alt: 'Entrance', span: '' },
 ];
 
 export default function Gallery() {

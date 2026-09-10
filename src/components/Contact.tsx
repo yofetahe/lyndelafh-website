@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
-// import { supabase } from '../lib/supabase';
+import { MapPin, Phone, Smartphone, Mail, Clock, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { db } from '../firebase.ts';
+import { ref, set, push } from "firebase/database";
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -11,40 +12,57 @@ export default function Contact() {
   const [errorMsg, setErrorMsg] = useState('');
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    // e.preventDefault();
-    // setStatus('submitting');
-    // setErrorMsg('');
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
 
-    // const form = e.currentTarget;
-    // const data = new FormData(form);
-    // const name = String(data.get('name') || '').trim();
-    // const email = String(data.get('email') || '').trim();
-    // const phone = String(data.get('phone') || '').trim();
-    // const careLevel = String(data.get('careLevel') || '').trim();
-    // const message = String(data.get('message') || '').trim();
+    // 1. Extract and clean the form data  
+    const form = e.currentTarget;
+    const data = new FormData(form);
 
-    // if (!name || !email) {
-    //   setStatus('error');
-    //   setErrorMsg('Please provide your name and email.');
-    //   return;
-    // }
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const phone = String(data.get('phone') || '').trim();
+    const careLevel = String(data.get('careLevel') || '').trim();
+    const message = String(data.get('message') || '').trim();
+    
+    // Validation check: ensure at least a name and contact info are provided
+    if (!name || (!email && !phone)) {
+      setStatus('error');
+      setErrorMsg('Please provide a name and at least one contact method.');
+      return;
+    }
 
-    // const { error } = await supabase.from('tour_inquiries').insert({
-    //   name,
-    //   email,
-    //   phone: phone || null,
-    //   care_level: careLevel || null,
-    //   message: message || null,
-    // });
+    // 2. Format the data into a clean structured object
+    const inquiryData = {
+      name: name,
+      email: email,
+      phone: phone,
+      careLevel: careLevel,
+      message: message,
+      status: "pending",               // Helpful tracker for the AFH admin
+      submittedAt: new Date().toISOString() // ISO timestamp for easy chronological sorting
+    };
 
-    // if (error) {
-    //   setStatus('error');
-    //   setErrorMsg('Something went wrong sending your message. Please call us instead.');
-    //   return;
-    // }
-
-    // setStatus('success');
-    // form.reset();
+    try {
+      // 3. Reference the node where you want to store submissions (e.g., 'inquiries')
+      const inquiriesRef = ref(db, 'inquiries');
+      
+      // 4. Generate a unique ID slot for this specific inquiry
+      const newInquiryRef = push(inquiriesRef);
+      
+      // 5. Save the structured object to Firebase Realtime Database
+      await set(newInquiryRef, inquiryData);
+      
+      // Success: Clear the form fields
+      setStatus('success');
+      form.reset();
+      // alert("Thank you! Your inquiry has been submitted successfully.");
+    } catch (error) {
+      console.error("Firebase write error: ", error);
+      setStatus('error');
+      setErrorMsg('Something went wrong sending your message. Please call us instead.');
+    }
   }
 
   return (
@@ -69,6 +87,7 @@ export default function Contact() {
               <div className="mt-10 space-y-6">
                 <ContactInfo icon={MapPin} label="Address" value="19430 70th Pl W, Lynnwood WA, 98036" />
                 <ContactInfo icon={Phone} label="Phone" value="(206) 842-1719" href="tel:+12068421719" />
+                <ContactInfo icon={Smartphone} label="Phone" value="(206) 765-0002" href="tel:+12067650002" />
                 <ContactInfo icon={Mail} label="Email" value="lyndelafh@gmail.com" href="mailto:lyndelafh@gmail.com" />
                 <ContactInfo icon={Clock} label="Visiting Hours" value="Daily, 9:00 AM – 6:00 PM" />
               </div>

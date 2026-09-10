@@ -51,7 +51,7 @@ export default function About() {
               A home, not a facility
             </h2>
             <p className="reveal mt-6 text-lg leading-relaxed text-sage-700">
-              For over two decades, Lyndel Adult Family Home has been a sanctuary
+              Lyndel Adult Family Home is a sanctuary
               for seniors who need a little extra support but still want the
               warmth and dignity of a real home. We believe that growing older
               should never mean giving up comfort, connection, or joy.

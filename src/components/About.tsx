@@ -34,7 +34,7 @@ export default function About() {
               />
             </div>
             {/* Floating stat card */}
-            <div className="absolute -bottom-6 -right-4 rounded-2xl bg-white p-5 shadow-xl sm:-right-6 sm:p-6" style={{width: "442px"}}>
+            <div className="absolute -bottom-12 right-4 left-4 rounded-2xl bg-white p-5 shadow-xl sm:bottom>-6 sm:left-auto sm:-right-6 sm:p-6 sm:w-[442px]">
               {/* <p className="font-serif text-4xl font-semibold text-sage-700">20+</p> */}
               <p className="mt-1 text-sm font-medium text-sage-600">
                 <b><i>A place where FAMILY always comes first.</i></b> <br/>

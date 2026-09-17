@@ -34,9 +34,12 @@ export default function About() {
               />
             </div>
             {/* Floating stat card */}
-            <div className="absolute -bottom-6 -right-4 rounded-2xl bg-white p-5 shadow-xl sm:-right-6 sm:p-6">
+            <div className="absolute -bottom-6 -right-4 rounded-2xl bg-white p-5 shadow-xl sm:-right-6 sm:p-6" style={{width: "442px"}}>
               {/* <p className="font-serif text-4xl font-semibold text-sage-700">20+</p> */}
-              <p className="mt-1 text-sm font-medium text-sage-600">A place where FAMILY always comes first.</p>
+              <p className="mt-1 text-sm font-medium text-sage-600">
+                <b><i>A place where FAMILY always comes first.</i></b> <br/>
+                Lyndel Adult Family Home provides a warm, comfortable and supportive home environment where residents receive personalized care, dignity and attention every day.
+              </p>
             </div>
             {/* Decorative accent */}
             <div className="absolute -left-4 -top-4 -z-10 h-32 w-32 rounded-3xl bg-sage-200/60 sm:-left-6 sm:-top-6" />
@@ -50,7 +53,7 @@ export default function About() {
             <h2 className="reveal mt-4 font-serif text-4xl font-semibold leading-tight text-sage-900 text-balance sm:text-5xl">
               A home, not a facility
             </h2>
-            <p className="reveal mt-6 text-lg leading-relaxed text-sage-700">
+            <p className="reveal mt-6 text-base leading-relaxed text-sage-700">
               Lyndel Adult Family Home is a sanctuary
               for seniors who need a little extra support but still want the
               warmth and dignity of a real home. We believe that growing older
@@ -59,7 +62,15 @@ export default function About() {
             <p className="reveal mt-4 text-base leading-relaxed text-sage-600">
               Our small resident count means every person is truly known — their
               stories, their preferences, their needs. It’s the kind of care
-              only a family home can provide.
+              only a family home can provide. It is located in the Lynnwood, Washington 
+              community and serves families looking for a smaller, home-like alternative 
+              to larger senior living communities.
+            </p>
+            <p className="reveal mt-4 text-base leading-relaxed text-sage-600">
+              We believe quality care begins with treating 
+              every resident as an individual. Our goal is to create a safe, welcoming 
+              home where residents receive personalized support while maintaining dignity, 
+              independence and meaningful connections with family and community.
             </p>
 
             <div className="mt-10 space-y-5">

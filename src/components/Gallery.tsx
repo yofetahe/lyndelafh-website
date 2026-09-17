@@ -10,14 +10,14 @@ import Bathroom from '../assets/Bathroom.jpeg';
 import Front2 from '../assets/Front2.jpeg';
 
 const images = [
-  { src: LivingRoom3, alt: 'Cozy living room', span: 'lg:col-span-2 lg:row-span-2' },
-  { src: Kitchen, alt: 'Kitchen Area', span: '' },
-  { src: BedRoomB, alt: 'Comfortable bedroom', span: '' },
-  { src: BedRoomC, alt: 'Comfortable bedroom', span: '' },
-  { src: BedRoomD, alt: 'Comfortable bedroom', span: '' },
-  { src: BedRoomDCoffeeTable, alt: 'Coffee table', span: '' },
-  { src: Bathroom, alt: 'Bathroom', span: '' },
-  { src: Front2, alt: 'Entrance', span: '' },
+  { src: LivingRoom3, alt: 'Lyndel Adult Family Home living room in Lynnwood WA', span: 'lg:col-span-2 lg:row-span-2' },
+  { src: Kitchen, alt: 'Modern, clean, and accessible kitchen area for residents at Lyndel Adult Family Home', span: '' },
+  { src: BedRoomB, alt: 'Private resident bedroom with large window and comfortable layout at Lyndel senior care', span: '' },
+  { src: BedRoomC, alt: 'Cozy, fully furnished private room for senior residents in Lynnwood WA', span: '' },
+  { src: BedRoomD, alt: 'Bright and accessible assisted living bedroom interior at Lyndel AFH', span: '' },
+  { src: BedRoomDCoffeeTable, alt: 'In-room seating and wooden coffee table setup in a resident bedroom', span: '' },
+  { src: Bathroom, alt: 'Safe and accessible resident bathroom with safety handrails and roll-in features', span: '' },
+  { src: Front2, alt: 'Main entrance and wheelchair-accessible front walkway of Lyndel Adult Family Home', span: '' },
 ];
 
 export default function Gallery() {

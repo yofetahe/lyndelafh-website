@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Heart } from 'lucide-react';
+import logo from '../assets/lyndelLogo.png';
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -32,8 +33,16 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-8xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
         <a href="#home" className="flex items-center gap-2.5" aria-label="Lyndel Adult Family Home">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-600 text-cream-50 shadow-sm">
-            <Heart className="h-5 w-5" strokeWidth={2.2} />
+          {/* <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-600 text-cream-50 shadow-sm"> */}
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-600 text-cream-50 shadow-sm overflow-hidden">
+            {/* <Heart className="h-5 w-5" strokeWidth={2.2} /> */}
+            <img
+                src={logo}
+                alt={"LyndelLogo"}
+                // className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
           </span>
           <span className="flex flex-col leading-none">
             <span

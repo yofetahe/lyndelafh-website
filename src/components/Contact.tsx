@@ -88,7 +88,7 @@ export default function Contact() {
                 <ContactInfo icon={MapPin} label="Address" value="19430 70th Pl W, Lynnwood WA, 98036" />
                 <ContactInfo icon={Phone} label="Phone" value="(206) 842-1719" href="tel:+12068421719" />
                 <ContactInfo icon={Smartphone} label="Phone" value="(206) 765-0002" href="tel:+12067650002" />
-                <ContactInfo icon={Mail} label="Email" value="lyndelafh@gmail.com" href="mailto:lyndelafh@gmail.com" />
+                <ContactInfo icon={Mail} label="Email" value="lyndel.afh@gmail.com" href="mailto:lyndel.afh@gmail.com" />
                 <ContactInfo icon={Clock} label="Visiting Hours" value="Daily, 9:00 AM – 6:00 PM" />
               </div>
             </div>

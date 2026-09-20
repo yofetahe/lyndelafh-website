@@ -18,11 +18,12 @@ const faqsData = [
     question: "How does the admission process work?",
     answer: `
     Getting started is simple and supportive:
-    1. Schedule a Tour: Contact us to visit our home in Lynnwood, WA, and meet our care team.
-    2. Assessment: Our licensed nursing team conducts a care assessment to evaluate your loved one's health history, daily routines, and care preferences.
-    3. Care Plan Creation: We develop an individualized care plan tailored specifically to their needs.
-    4. Move-In: Once paperwork and licensing requirements are complete, we welcome your family member home and assist them with a smooth, gentle transition.
-    `,
+    <ol>
+    <li>1. <b>Schedule a Tour</b>: Contact us to visit our home in Lynnwood, WA, and meet our care team.</li>
+    <li>2. <b>Assessment</b>: Our licensed nursing team conducts a care assessment to evaluate your loved one's health history, daily routines, and care preferences.</li>
+    <li>3. <b>Care Plan Creation</b>: We develop an individualized care plan tailored specifically to their needs.</li>
+    <li>4. <b>Move-In</b>: Once paperwork and licensing requirements are complete, we welcome your family member home and assist them with a smooth, gentle transition.</li>
+    </ol>`,
   },
   {
     // Care, Medical & Staffing
@@ -73,7 +74,8 @@ export default function FAQAccordion() {
   };
 
   return (
-    <section className="w-full bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    // <section id="faq" className="bg-sage-50 py-24 sm:py-32">
+    <section id="faq" className="w-full bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
@@ -100,8 +102,8 @@ export default function FAQAccordion() {
                   {/* <span className="font-medium text-slate-900 text-sm sm:text-base">
                     {faq.question}
                   </span> */}
-                  <span 
-                    className="font-medium text-slate-900 text-sm sm:text-base"
+                  <div 
+                    className="font-medium text-slate-900 text-sm sm:text-base list-decimal list-inside [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:pl-4"
                     dangerouslySetInnerHTML={{ __html: faq.question }}
                   />
                   <span
@@ -133,9 +135,13 @@ export default function FAQAccordion() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100">
+                    {/* <div className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100">
                       {faq.answer}
-                    </div>
+                    </div> */}
+                    <div 
+                      className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100"
+                      dangerouslySetInnerHTML={{ __html: faq.answer }}
+                    />
                   </div>
                 </div>
               </div>

@@ -4,17 +4,29 @@ import { db } from '../firebase.ts';
 import { ref, set, push } from "firebase/database";
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
+type ErrorType = {
+  fullName?: string,
+  email?: string,
+  phoneNumber?: string,
+  levelOfCare?: string,
+}
 
 const careLevels = ['Independent Living', 'Assisted Living', 'Memory Care', 'Not Sure Yet'];
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [errors, setErrors] = useState<ErrorType>({ fullName: '', email: '', phoneNumber: '' });
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^\d{10}$/;
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus('submitting');
+    e.preventDefault();    
     setErrorMsg('');
+    setErrors({ fullName: '', email: '', phoneNumber: '' });
+
+    let formErrors: ErrorType = {};
 
     // 1. Extract and clean the form data  
     const form = e.currentTarget;
@@ -25,6 +37,27 @@ export default function Contact() {
     const phone = String(data.get('phone') || '').trim();
     const careLevel = String(data.get('careLevel') || '').trim();
     const message = String(data.get('message') || '').trim();
+
+    if (!name || name.split(" ").length < 2 || name.split(" ").length > 3) {
+      formErrors.fullName = "Full name is required"
+    }
+
+    if (email && !emailRegex.test(email)) {
+      formErrors.email = 'Invalid email address format';
+    }
+
+    if (phone && !phoneRegex.test(phone)) {
+      formErrors.phoneNumber = 'Phone number must be exactly 10 digits';
+    }
+
+    if (careLevel.length === 0) {
+      formErrors.levelOfCare = 'Please selected type of level of care needed';
+    }
+
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return
+    }
     
     // Validation check: ensure at least a name and contact info are provided
     if (!name || (!email && !phone)) {
@@ -32,6 +65,8 @@ export default function Contact() {
       setErrorMsg('Please provide a name and at least one contact method.');
       return;
     }
+
+    setStatus('submitting');
 
     // 2. Format the data into a clean structured object
     const inquiryData = {
@@ -116,11 +151,11 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Full Name" name="name" type="text" required placeholder="Jane Doe" />
-                  <Field label="Email" name="email" type="email" required placeholder="jane@email.com" />
+                  <Field label="Full Name" name="name" type="text" required placeholder="Jane Doe" error={!!errors.fullName} />
+                  <Field label="Email" name="email" type="email" required placeholder="jane@email.com" error={!!errors.email} />
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Phone (optional)" name="phone" type="tel" placeholder="(555) 000-0000" />
+                  <Field label="Phone (optional)" name="phone" type="tel" placeholder="(555) 000-0000" error={!!errors.phoneNumber} />
                   <div>
                     <label htmlFor="careLevel" className="mb-1.5 block text-sm font-medium text-sage-800">
                       Level of Care
@@ -129,7 +164,11 @@ export default function Contact() {
                       id="careLevel"
                       name="careLevel"
                       defaultValue=""
-                      className="w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors focus:border-sage-500 focus:ring-2 focus:ring-sage-200"
+                      className={`w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors 
+                        ${errors.levelOfCare 
+                          ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+                          : 'border-gray-300 focus:border-sage-500 focus:ring-2 focus:ring-sage-500'
+                        }`}
                     >
                       <option value="" disabled>Select an option</option>
                       {careLevels.map((c) => (
@@ -219,12 +258,14 @@ function Field({
   type,
   required,
   placeholder,
+  error = false
 }: {
   label: string;
   name: string;
   type: string;
   required?: boolean;
   placeholder?: string;
+  error?: boolean;
 }) {
   return (
     <div>
@@ -237,7 +278,12 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors placeholder:text-sage-400 focus:border-sage-500 focus:ring-2 focus:ring-sage-200"
+        // className="w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors placeholder:text-sage-400 focus:border-sage-500 focus:ring-2 focus:ring-sage-200"
+        className={`w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors placeholder:text-sage-400
+          ${error 
+            ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
+            : 'border-gray-300 focus:border-sage-500 focus:ring-2 focus:ring-sage-500'
+          }`}
       />
     </div>
   );

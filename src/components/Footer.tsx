@@ -1,4 +1,5 @@
-import { Heart, MapPin, Phone, Smartphone, Mail } from 'lucide-react';
+import { MapPin, Phone, Smartphone, Mail } from 'lucide-react';
+import logo from '../assets/lyndelLogo.png';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -17,8 +18,15 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-600 text-cream-50">
-                <Heart className="h-5 w-5" strokeWidth={2.2} />
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-600 text-cream-50 shadow-sm overflow-hidden">
+                {/* <Heart className="h-5 w-5" strokeWidth={2.2} /> */}
+                <img
+                  src={logo}
+                  alt={"LyndelLogo"}
+                  // className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
               </span>
               <span className="flex flex-col leading-none">
                 <span className="font-serif text-xl font-semibold text-cream-50">Lyndel</span>
@@ -84,7 +92,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Lyndel Adult Family Home. All rights reserved.
           </p>
           <p className="text-xs text-cream-100/50">
-            Licensed Adult Family Home · State of Washington | <a href="/admin" className="text-sm text-gray-500 hover:underline">Staff Portal</a>
+            Licensed Adult Family Home · State of Washington | <a href="/admin/" className="text-sm text-gray-500 hover:underline">Staff Portal</a>
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import logo from '../assets/lyndelLogo.png';
 
 const links = [
@@ -10,6 +10,7 @@ const links = [
   { label: 'Rooms', href: '#rooms' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Navbar() {

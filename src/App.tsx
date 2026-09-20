@@ -16,7 +16,7 @@ import Rooms from './components/Rooms';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 import AdminDashboard from './components/AdminDashboard'; 
-import FAQAccordion from './components/faq';
+import FAQAccordion from './components/Faq';
 
 // 3. Move your existing landing page layout into a clean sub-component
 function MainLandingPage() {

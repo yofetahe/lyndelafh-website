@@ -16,6 +16,7 @@ import Rooms from './components/Rooms';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 import AdminDashboard from './components/AdminDashboard'; 
+import FAQAccordion from './components/faq';
 
 // 3. Move your existing landing page layout into a clean sub-component
 function MainLandingPage() {
@@ -32,6 +33,7 @@ function MainLandingPage() {
         <Rooms />
         <Gallery />
         <Contact />
+        <FAQAccordion />
       </main>
       <Footer />
     </div>

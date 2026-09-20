@@ -36,7 +36,7 @@ function App() {
   }, []);
 
   // 3. Conditional Rendering based on the clean path
-  if (currentPath === '/admin/') {
+  if (currentPath === '/admin' || currentPath === '/admin/') {
     return <AdminDashboard />;
   }
 

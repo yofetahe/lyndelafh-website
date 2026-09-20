@@ -17,14 +17,6 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_MEASUREMENT_ID
-  // apiKey: "AIzaSyDHws5HsYZzqYdBI-pagbuLllynUGPjzJ4",
-  // authDomain: "lyndel-afh.firebaseapp.com",
-  // databaseURL: "https://lyndel-afh-default-rtdb.firebaseio.com",
-  // projectId: "lyndel-afh",
-  // storageBucket: "lyndel-afh.firebasestorage.app",
-  // messagingSenderId: "1036948105920",
-  // appId: "1:1036948105920:web:bd3c655ada973c97b5db25",
-  // measurementId: "G-LHXK74GHF4"
 };
 
 // Initialize Firebase

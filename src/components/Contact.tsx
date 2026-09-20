@@ -8,7 +8,7 @@ type ErrorType = {
   fullName?: string,
   email?: string,
   phoneNumber?: string,
-  levelOfCare?: string,
+  careLevel?: string,
 }
 
 const careLevels = ['Independent Living', 'Assisted Living', 'Memory Care', 'Not Sure Yet'];
@@ -24,7 +24,7 @@ export default function Contact() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();    
     setErrorMsg('');
-    setErrors({ fullName: '', email: '', phoneNumber: '' });
+    setErrors({ fullName: '', email: '', phoneNumber: '', careLevel: '' });
 
     let formErrors: ErrorType = {};
 
@@ -42,18 +42,18 @@ export default function Contact() {
       formErrors.fullName = "Full name is required"
     }
 
-    if (email && !emailRegex.test(email)) {
+    if (email.length > 0 && !emailRegex.test(email)) {
       formErrors.email = 'Invalid email address format';
     }
 
-    if (phone && !phoneRegex.test(phone)) {
+    if (phone.length > 0 && !phoneRegex.test(phone)) {
       formErrors.phoneNumber = 'Phone number must be exactly 10 digits';
     }
 
     if (careLevel.length === 0) {
-      formErrors.levelOfCare = 'Please selected type of level of care needed';
+      formErrors.careLevel = 'Please selected type of level of care needed';
     }
-
+console.log("------>>>", Object.keys(formErrors).length, JSON.stringify(formErrors))
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return
@@ -79,25 +79,25 @@ export default function Contact() {
       submittedAt: new Date().toISOString() // ISO timestamp for easy chronological sorting
     };
 
-    try {
-      // 3. Reference the node where you want to store submissions (e.g., 'inquiries')
-      const inquiriesRef = ref(db, 'inquiries');
+    // try {
+    //   // 3. Reference the node where you want to store submissions (e.g., 'inquiries')
+    //   const inquiriesRef = ref(db, 'inquiries');
       
-      // 4. Generate a unique ID slot for this specific inquiry
-      const newInquiryRef = push(inquiriesRef);
+    //   // 4. Generate a unique ID slot for this specific inquiry
+    //   const newInquiryRef = push(inquiriesRef);
       
-      // 5. Save the structured object to Firebase Realtime Database
-      await set(newInquiryRef, inquiryData);
+    //   // 5. Save the structured object to Firebase Realtime Database
+    //   await set(newInquiryRef, inquiryData);
       
-      // Success: Clear the form fields
-      setStatus('success');
-      form.reset();
-      // alert("Thank you! Your inquiry has been submitted successfully.");
-    } catch (error) {
-      console.error("Firebase write error: ", error);
-      setStatus('error');
-      setErrorMsg('Something went wrong sending your message. Please call us instead.');
-    }
+    //   // Success: Clear the form fields
+    //   setStatus('success');
+    //   form.reset();
+    //   // alert("Thank you! Your inquiry has been submitted successfully.");
+    // } catch (error) {
+    //   console.error("Firebase write error: ", error);
+    //   setStatus('error');
+    //   setErrorMsg('Something went wrong sending your message. Please call us instead.');
+    // }
   }
 
   return (
@@ -164,10 +164,10 @@ export default function Contact() {
                       id="careLevel"
                       name="careLevel"
                       defaultValue=""
-                      className={`w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors 
-                        ${errors.levelOfCare 
+                      className={`w-full rounded-xl border bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors 
+                        ${!!errors.careLevel 
                           ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
-                          : 'border-gray-300 focus:border-sage-500 focus:ring-2 focus:ring-sage-500'
+                          : 'border-sage-200 focus:border-sage-500 focus:ring-2 focus:ring-sage-500'
                         }`}
                     >
                       <option value="" disabled>Select an option</option>
@@ -277,12 +277,11 @@ function Field({
         name={name}
         type={type}
         required={required}
-        placeholder={placeholder}
-        // className="w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors placeholder:text-sage-400 focus:border-sage-500 focus:ring-2 focus:ring-sage-200"
-        className={`w-full rounded-xl border border-sage-200 bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors placeholder:text-sage-400
+        placeholder={placeholder}        
+        className={`w-full rounded-xl border bg-cream-50 px-4 py-3 text-sage-900 outline-none transition-colors placeholder:text-sage-400 
           ${error 
             ? 'border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-500' 
-            : 'border-gray-300 focus:border-sage-500 focus:ring-2 focus:ring-sage-500'
+            : 'border-sage-200 focus:border-sage-500 focus:ring-2 focus:ring-sage-500' 
           }`}
       />
     </div>

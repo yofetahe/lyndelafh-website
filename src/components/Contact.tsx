@@ -53,7 +53,7 @@ export default function Contact() {
     if (careLevel.length === 0) {
       formErrors.careLevel = 'Please selected type of level of care needed';
     }
-console.log("------>>>", Object.keys(formErrors).length, JSON.stringify(formErrors))
+
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return
@@ -79,25 +79,25 @@ console.log("------>>>", Object.keys(formErrors).length, JSON.stringify(formErro
       submittedAt: new Date().toISOString() // ISO timestamp for easy chronological sorting
     };
 
-    // try {
-    //   // 3. Reference the node where you want to store submissions (e.g., 'inquiries')
-    //   const inquiriesRef = ref(db, 'inquiries');
+    try {
+      // 3. Reference the node where you want to store submissions (e.g., 'inquiries')
+      const inquiriesRef = ref(db, 'inquiries');
       
-    //   // 4. Generate a unique ID slot for this specific inquiry
-    //   const newInquiryRef = push(inquiriesRef);
+      // 4. Generate a unique ID slot for this specific inquiry
+      const newInquiryRef = push(inquiriesRef);
       
-    //   // 5. Save the structured object to Firebase Realtime Database
-    //   await set(newInquiryRef, inquiryData);
+      // 5. Save the structured object to Firebase Realtime Database
+      await set(newInquiryRef, inquiryData);
       
-    //   // Success: Clear the form fields
-    //   setStatus('success');
-    //   form.reset();
-    //   // alert("Thank you! Your inquiry has been submitted successfully.");
-    // } catch (error) {
-    //   console.error("Firebase write error: ", error);
-    //   setStatus('error');
-    //   setErrorMsg('Something went wrong sending your message. Please call us instead.');
-    // }
+      // Success: Clear the form fields
+      setStatus('success');
+      form.reset();
+      // alert("Thank you! Your inquiry has been submitted successfully.");
+    } catch (error) {
+      console.error("Firebase write error: ", error);
+      setStatus('error');
+      setErrorMsg('Something went wrong sending your message. Please call us instead.');
+    }
   }
 
   return (
